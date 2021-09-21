@@ -1,0 +1,86 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "سبد خرید";
+}
+
+    @if (Model != null)
+    {
+        // اگر مدل خالی نبود یعنی فرست اور دیفالت یک فاکتور را پیدا کرده بود
+        <table class="table table-striped">
+           <thead class="thead-dark">
+               <tr>
+                   <th>کالا</th>
+                   <th>تعداد</th>
+                   <th>قیمت</th>
+                   <th></th>
+               </tr>
+           </thead>
+           <tbody>
+               @foreach (var item in Model.OrderDetails)
+               {
+               <tr>
+                   <td>@item.Product.Name</td> @*نمایش محصول*@
+                   <td>@item.Count</td>
+                   <td>@(item.Count * item.Price)</td>@*جمع هر خط*@
+                   <td><a asp-action="RemoveCart" asp-route-detailId="@item.DetailId"> حــذف</a></td>
+               </tr>
+               }
+           </tbody>
+    </table>
+        <h5>جمع کل : @Model.OrderDetails.Sum(s=> s.Count * s.Price)</h5>
+
+    }
+    else
+    {
+        <div class="alert alert-danger">فاکتوری نیست</div>
+    }
+
+@*<h1>نمایش فاکتور</h1>
+<hr />
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>تصویر</th>
+        <th>عنوان</th>
+        <th>تعداد</th>
+        <th>قیمت</th>
+        <th>جمع</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            
+            <td>
+                <img style="max-width: 150px" class="thumbnail" src="/Images/@item.ImageName" />
+            </td>
+            <td>@item.Title</td>
+            <td>@item.Count</td>
+            <td>@item.Price</td>
+            <td>@item.Sum</td>
+            <td>
+                <a class="btn btn-sm btn-success" href="/Orders/Command/@item.OrderDetailId?command=up">افزایش</a>
+                <a class="btn btn-sm btn-warning" href="/Orders/Command/@item.OrderDetailId?command=down">کاهش</a>
+                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-controller="Orders" asp-route-id="@item.OrderDetailId">
+                    حذف
+                </a>
+            </td>
+        </tr>
+
+        
+    }
+    <tr>
+        <td colspan="5" class="text-left">جمع کل : </td>
+        <td colspan="2">
+            @Model.Sum(s => s.Sum).ToString("#,0 تومان")
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4" class="text-left"></td>
+        <td colspan="3">
+            <a class="btn btn-primary btn-block" asp-action="Payment">تایید و پرداخت نهایی</a>
+
+        </td>
+    </tr>
+</table>*@

@@ -1,0 +1,139 @@
+﻿@model MyEshop.Models.LoginViewModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "ورود به حساب کاربری";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/lib/bootstrap4/css/bootstrap-rtl.css" rel="stylesheet" />
+    @*<link href="~/lib/bootstrap/dist/css/bootstrap-rtl.min.css" rel="stylesheet" />*@
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    @*<link href="~/css/loginRegister.css" rel="stylesheet" />*@
+    @*<link href="~/css/StyleSheet1.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="https ://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+
+<body class="rtl">
+    <header class="p-3 text-white" style="background-color:#54d242;font-family:Nazanin;font-size:24px;">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link px-2  text-white">فروشگاه من</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="ContactUs" class="nav-link px-2 text-white">تماس با ما</a></li>
+
+                    <li><a asp-area="" asp-controller="Home" asp-action="AboutUs" class="nav-link px-2 text-white">درباره ما</a></li>
+                </ul>
+
+                <div class="text-end" style="padding-right:400px;">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-outline-light me-2">
+                            @User.Identity.Name کاربر عزیز خوش آمدید
+                        </a>
+                        <a class="btn btn-warning" asp-area="" asp-controller="Account" asp-action="Logout">
+                            خروج
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-outline-light me-2" asp-area="" asp-controller="Account" asp-action="Register">
+                            ثبت نام
+                        </a>
+                        <a class="btn btn-warning" asp-area="" asp-controller="Account" asp-action="Login">
+                            ورود
+                        </a>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="row" style=";background-size:cover;background-repeat:no-repeat;position:center;">
+        <div class="container" style=" position: relative;
+    width: 480px;
+    height: 380px;
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,1);
+    margin-top:8%;
+    margin-bottom:20%;">
+            <h1>ورود</h1>
+            <hr />
+            <div class="row" position: absolute;
+                 width: 100%;
+                 height: 100%;
+                 padding: 40px;
+                 box-sizing: border-box;
+                 z-index: 1;>
+                <div class="col-md-12 ">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="alert alert-danger">شما دسترسی ندارید !</div>
+                    }
+                    <form asp-action="Login">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="img-area">
+                            <img src="~/images/" alt="" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label form-area"></label>
+                            <input asp-for="Email" class="form-control border-left-0 border-right-0 border-top-0 " placeholder="example@info.com" style="
+            border-bottom: 3px solid #141313;" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control border-left-0 border-right-0 border-top-0" style="
+            border-bottom: 3px solid #141313;" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="ورود" class="btn btn-success" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="border-top footer text-muted  m-3 p-3">
+        <div class="container">
+            &copy; 1400 - MyEshop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+</body>
+</html>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@*<div class="container con">*@
+@*<div class="form">
+            <h2> Log in Form</h2>
+            <form>
+                <div class="inputBox">
+                    <input type="text" name="" placeholder="UserName" />
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="" placeholder="Password" />
+                </div>
+                <div class="inputBox">
+                    <input type="submit" value="LogIN" />
+                </div>
+                <div class="inputBox">
+                    <input type="checkbox" value="Remember Me" />
+                </div>
+            </form>
+        </div>
+    </div>*@

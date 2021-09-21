@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+    <link href="~/lib/bootstrap4/css/bootstrap-rtl.css" rel="stylesheet" />
+    @*<link href="~/lib/bootstrap/dist/css/bootstrap-rtl.min.css" rel="stylesheet" />*@
+    <link href="~/css/admin.css" rel="stylesheet" />
+    @*<link href="~/css/bootstrap-rtl.css" rel="stylesheet" />*@
+</head>
+<body dir="rtl">
+    <header class="" style="width: 100vw;
+    height: 65px;
+    padding-right: 25px;
+    padding-left: 25px;
+    background-color: darkgreen;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;">
+        <h5>مدیریت سایت</h5>
+    </header>
+    <div class="row">
+        <div class="col-md-2 nav-item">
+            <nav style="display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    height: calc(100vh - 48px);
+    background-color: #f8f9fa;
+    color: #212529;">
+                <ul style="list-style: none; ">
+                    <li style="padding: 10px 25px; color: #212529;
+    text-decoration: none;">
+                        <a class="nav-item header" id="item" href="/"> فروشگاه </a>
+                    </li>
+                    <li style="padding: 10px 25px; color: #212529;
+    text-decoration: none;">
+                        <a class="nav-item header" id="item" href="/Admin/ManageUsers/Index">مدیریت کاربران</a>
+                    </li>
+                    <li style="padding: 10px 25px; color: #212529;
+    text-decoration: none;">
+                        <a class="" style="display: block; text-decoration: none; font-weight:bold;" asp-controller="Home" asp-action="Index">
+                            خروج
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-8">
+            @RenderBody()
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+    @RenderSection("Scripts", false)
+</body>
+</html>

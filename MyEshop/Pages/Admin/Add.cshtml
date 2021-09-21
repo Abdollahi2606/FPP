@@ -1,0 +1,59 @@
+﻿@page
+@model MyEshop.Pages.Admin.AddModel
+@{
+    ViewData["Title"] = "افرودن کالا";
+}
+    <div class="row">
+        <div class="container"
+              style="padding:20px;margin-top:65px;margin-bottom:65px; margin-left:80px; margin-right:80px;  width:800px!important;box-shadow:10px #808080 ; border:2px solid #808080; border-radius:5px;">
+            <div class="col-md-12">
+                <h1>افزودن کالا</h1>
+                <hr />
+                <form method="post" enctype="multipart/form-data">
+                    <dl class="dl-horizontal mt-3">
+                        <dd><label asp-for="Product.Name"></label></dd>
+                        <dt>
+                            <input asp-for="Product.Name" class="form-control" />
+                            <span asp-validation-for="Product.Name"></span>
+                        </dt>
+                        <dd><label asp-for="Product.Description"></label></dd>
+                        <dt>
+                            <textarea asp-for="Product.Description" class="form-control"></textarea>
+                            <span asp-validation-for="Product.Description"></span>
+                        </dt>
+                        <dd><label asp-for="Product.Price"></label></dd>
+                        <dt>
+                            <input asp-for="Product.Price" class="form-control" />
+                            <span asp-validation-for="Product.Price"></span>
+                        </dt>
+                        <dd><label asp-for="Product.QuantityInStock"></label></dd>
+                        <dt>
+                            <input asp-for="Product.QuantityInStock" class="form-control" />
+                            <span asp-validation-for="Product.QuantityInStock"></span>
+                        </dt>
+                        <dd><label asp-for="Product.Picture"></label></dd>
+                        <dt>
+                            <input asp-for="Product.Picture" class="form-control" />
+                            <span asp-validation-for="Product.Picture"></span>
+                        </dt>
+                        <dd>گروه</dd>
+                        <dt>
+                            @foreach (var item in Model.Product.Categories)
+                            {
+                                
+                                    <input type="checkbox" name="selectedGroups" value="@item.Id" />@item.Name
+
+                                
+                            }
+                        </dt>
+                        <dd>@*<label asp-for="Product.Name"></label>*@</dd>
+                        <dt>
+                            <input type="submit" class="btn btn-success btn-block" value="ثبت" />
+                        </dt>
+
+                    </dl>
+                </form>
+            </div>
+        </div>
+    </div>
+

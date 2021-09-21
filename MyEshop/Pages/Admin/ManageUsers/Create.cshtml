@@ -1,0 +1,49 @@
+﻿@page
+@model MyEshop.Pages.Admin.ManageUsers.CreateModel
+
+@{
+    ViewData["Title"] = "افزودن کاربر";
+}
+
+<h1>افزودن کاربر</h1>
+
+<div class="row">
+    <div class="container"
+         style="padding:20px;margin-top:65px;margin-bottom:65px; margin-left:80px; margin-right:80px;  width:600px!important;box-shadow:10px #808080 ; border:2px solid #808080; border-radius:5px;">
+        <div class="col-md-12">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Users.Email" class="control-label"></label>
+                    <input asp-for="Users.Email" class="form-control" placeholder="Example@info.com" />
+                    <span asp-validation-for="Users.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Users.Password" class="control-label"></label>
+                    <input asp-for="Users.Password" class="form-control" />
+                    <span asp-validation-for="Users.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Users.RegisterDate" class="control-label"></label>
+                    <input asp-for="Users.RegisterDate" class="form-control" placeholder="YY/MM/DD" />
+                    <span asp-validation-for="Users.RegisterDate" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Users.IsAdmin" /> @Html.DisplayNameFor(model => model.Users.IsAdmin)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="ثبت" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+            <div>
+                <a style="font-weight:bold;text-decoration:none;" asp-page="Index">برگشت</a>
+            </div>
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿@model RegisterViewModel
+@{
+    Layout = null;
+    ViewData["Title"] = "SuccessRegister";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/lib/bootstrap4/css/bootstrap-rtl.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https ://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body class="rtl">
+    <header class="p-3 text-white" style="background-color:#54d242;font-family:Nazanin;font-size:24px;">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link px-2  text-white">فروشگاه من</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="ContactUs" class="nav-link px-2 text-white">تماس با ما</a></li>
+
+                    <li><a asp-area="" asp-controller="Home" asp-action="AboutUs" class="nav-link px-2 text-white">درباره ما</a></li>
+                </ul>
+
+                <div class="text-end">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-outline-light me-2">
+                            @User.Identity.Name کاربر عزیز خوش آمدید
+                        </a>
+                        <a class="btn btn-warning" asp-area="" asp-controller="Account" asp-action="Logout">
+                            خروج
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-outline-light me-2" asp-area="" asp-controller="Account" asp-action="Register">
+                            ثبت نام
+                        </a>
+                        <a class="btn btn-warning" asp-area="" asp-controller="Account" asp-action="Login">
+                            ورود
+                        </a>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container" style=" position: relative;
+    width: 800px;
+    height: 300px;
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,1);
+    margin-top:8%;
+    margin-bottom:20%;">
+            <div class="row">
+            <div class="col-md-12">
+                <h1>ثبت نام با موفقیت انجام شد</h1>
+                <div class="alert alert-success">
+                    کاربر عزیز با ایمیل '@Model.Email' ممنون از ثبت نام شما. می توانید از طریق لینک زیر وارد زیر شوید
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <p>
+                        <a class="btn btn-success" asp-controller="Account" asp-action="Login">ورود به سایت</a>
+                    </p>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <footer class="border-top footer text-muted  m-3 p-3">
+        <div class="container">
+            &copy; 1400 - MyEshop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿@model Product
+
+    <div class="col-3 align-content-center ml-n4">
+        <div class="card m-1" style="text-align:center; height:250px !important;  ">
+            <img src="~/images/@(Model.Id).jpg" height="160" width="160" class="card-img-top img-thumbnail" />
+            <div class="card-body text-nowrap">
+                <h6 class="card-title">@Model.Name</h6>
+                <a  class="" style="color:#db2130!important;" asp-action="Detail" asp-controller="Home" asp-route-id="@Model.Id">جزئیات</a>
+            </div>
+        </div>
+
+        @*<img src="~/images/@(Model.Id).jpg" height="160" width="160" class="card-img-top img-thumbnail" />
+        <h2 class="text-center">@Model.Name</h2>
+        <a class="btn btn-success btn-block" asp-controller="Home" asp-route-id="@Model.Id">جزئیات</a>*@
+    </div>

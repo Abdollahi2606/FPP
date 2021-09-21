@@ -1,0 +1,52 @@
+﻿@page
+@model MyEshop.Pages.Admin.ManageUsers.DeleteModel
+
+@{
+    ViewData["Title"] = "حذف کاربر";
+}
+    <div class="row">
+        <div class="container"
+             style="padding:20px;margin-top:65px;margin-bottom:65px; margin-left:80px; margin-right:80px;  width:800px!important;box-shadow:10px #808080 ; border:2px solid #808080; border-radius:5px;">
+            <div class="col-md-12">
+                <h1>حذف کاربر</h1>
+                <hr />
+                <h3>آیا مطمئن به حذف این کاربر هستید؟</h3>
+                <div>
+
+                    <dl class="row py-3 alert-warning">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Users.Email)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Users.Email)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Users.Password)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Users.Password)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Users.RegisterDate)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Users.RegisterDate)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Users.IsAdmin)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Users.IsAdmin)
+                        </dd>
+                    </dl>
+
+                    <form method="post" class="pb-3">
+                        <input type="hidden" asp-for="Users.UserID" />
+                        <input type="submit" value="Delete" class="btn btn-danger btn-block" /> 
+
+                    </form>
+                    <a class="pt-4" style="font-weight:bold;text-decoration:none;" asp-page="./Index">برگشت</a>
+                </div>
+                </div>
+</div>
+</div>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MyEshop.Models.ViewModels.OrderViewModels>
+
+<div class="card border-success mt-1" style="width: 300px;">
+    <div class="card-header bg-transparent border-success">سبد خرید شما</div>
+    <div class="card-body text-success">
+        @*<h5 class="card-title">Success Panel title</h5>
+            <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the panel's content.</p>*@
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <div class="row" style="margin-top: 3px">
+                    <div class="col-md-4 mt-2">
+                        <img src="/Images/@(item.ImageName).jpg" class="thumbnail" style="max-width: 100%" />
+                    </div>
+                    <div class="col-md-8 p-4 card-title">
+                        <h6>@item.Title <span class="badge badge-danger badge-pill">@item.Count</span></h6>
+                    </div>
+                </div>
+            }
+
+        }
+        else
+        {
+            <h5 class="text-muted text-center">سبد خرید خالی است</h5>
+        }
+    </div>
+    <div class="card-footer bg-transparent border-success">
+        @if (Model.Any())
+        {
+            <a asp-action="ShowCart" asp-controller="Home" class="btn btn-success btn-block">نمایش فاکتور</a>
+        }
+        else
+        {
+            <a asp-action="ShowCart" asp-controller="Orders" class="btn btn-success btn-block disabled">نمایش فاکتور</a>
+        }
+    </div>
+</div>

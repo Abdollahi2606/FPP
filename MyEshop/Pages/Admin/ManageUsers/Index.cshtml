@@ -1,0 +1,64 @@
+﻿@page
+@model MyEshop.Pages.Admin.ManageUsers.IndexModel
+
+@{
+    ViewData["Title"] = "مدیریت کاربران";
+}
+    <div class="row">
+        <div class="container"
+             style="padding:20px;margin-top:65px;margin-bottom:65px; margin-left:80px; margin-right:80px;  width:900px!important;box-shadow:10px #808080 ; border:2px solid #808080; border-radius:5px;">
+            <div class="col-md-12">
+                <h1>مدیریت کاربران</h1>
+                <hr />
+                <p class="pt-3">
+                    <a class="btn btn-sm btn-success" asp-page="Create" style="font-size:22px;">افزودن کاربر جدید</a>
+                </p>
+                <table class="tabletable-success mt-5 pt-2" style="font-weight:bold;">
+                    <thead style="background-color:#24a867;">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Users[0].Email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Users[0].Password)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Users[0].RegisterDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Users[0].IsAdmin)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center" style="font-weight:bold;">
+                        @foreach (var item in Model.Users)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Password)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RegisterDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IsAdmin)
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary" asp-page="./Edit" asp-route-id="@item.UserID">ویرایش</a> |
+                                   
+                                    <a class="btn btn-sm btn-danger" asp-page="./Delete" asp-route-id="@item.UserID">حذف</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="mt-3 mb-3">
+                    <a class="" style="font-weight:bold;text-decoration:none ;text-align:end;" href="/Admin/Index">صفحه اصلی مدیریت</a>
+                </div>
+            </div>
+        </div>
+        </div>
